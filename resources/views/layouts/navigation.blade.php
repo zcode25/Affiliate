@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <!-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" /> -->
+                        <h1 class="text-xl font-bold text-purple-600">TerasWeb Affiliate</h1>
                     </a>
                 </div>
 
@@ -15,8 +16,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('affiliate.registered')" :active="request()->routeIs('affiliate*')">
-                        {{ __('Registered') }}
+                    <x-nav-link :href="route('affiliate.registration')" :active="request()->routeIs('affiliate*')">
+                        {{ __('Registration') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -73,8 +74,8 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('affiliate.registered')" :active="request()->routeIs('affiliate')">
-                {{ __('Registered') }}
+            <x-responsive-nav-link :href="route('affiliate.registration')" :active="request()->routeIs('affiliate')">
+                {{ __('Registration') }}
             </x-responsive-nav-link>
         </div>
 

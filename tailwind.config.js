@@ -18,5 +18,10 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        require('flowbite/plugin')({
+            datatables: true,
+        }),
+        forms,
+    ],
 };

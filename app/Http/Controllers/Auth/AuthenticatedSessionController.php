@@ -24,11 +24,36 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+            // Cek apakah pengguna adalah affiliate dan statusnya 'pending' atau 'reject'
+            if ($user->affiliate && $user->affiliate->status === 'pending') {
+                Auth::logout(); // Logout pengguna agar tidak masuk ke sesi login
+
+                return redirect()->route('login')->withErrors([
+                    'email' => 'Your account is still pending approval and cannot log in at this time.',
+                ]);
+            } elseif ($user->affiliate && $user->affiliate->status === 'reject') {
+                Auth::logout(); // Logout pengguna agar tidak masuk ke sesi login
+
+                return redirect()->route('login')->withErrors([
+                    'email' => 'Your account has been rejected and cannot log in.',
+                ]);
+            }
+
+            // Lakukan regenerasi sesi dan arahkan ke dashboard jika lolos verifikasi
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+
+        // Jika kredensial tidak valid
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**

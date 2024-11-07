@@ -10,9 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
-        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
@@ -34,13 +32,76 @@
                 {{ $slot }}
             </main>
         </div>
-        <script>
-            $(document).ready(function() {
-                $('#affiliateRegistrationTable').DataTable();
-            });
 
-            $(document).ready(function() {
-                $('#affiliateRegistrationHistoryTable').DataTable();
+        @include('sweetalert::alert')
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+        <script>
+            if (document.getElementById("affiliateRegistrationTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#affiliateRegistrationTable", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
+
+            if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#search-table", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mencari tombol dengan kelas `swalDefaultConfirm`
+            const confirmButtons = document.querySelectorAll('.swalDefaultConfirm');
+
+            confirmButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault(); // Mencegah submit form langsung
+
+                Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to activate this affiliate?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#8b5cf6",
+                cancelButtonColor: "#ec4899",
+                confirmButtonText: "Yes, activate it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika dikonfirmasi, submit form
+                    button.closest('form').submit();
+                }
+                });
+            });
+            });
+        });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const rejectButtons = document.querySelectorAll('.swalDefaultReject');
+
+                rejectButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault(); // Mencegah submit form langsung
+
+                    Swal.fire({
+                    title: "Are you sure?",
+                    text: "Do you want to reject this affiliate?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#8b5cf6",  // Warna ungu (Tailwind: purple-500)
+                    cancelButtonColor: "#ec4899",   // Warna pink (Tailwind: pink-500)
+                    confirmButtonText: "Yes, reject it!",
+                    cancelButtonText: "Cancel"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        button.closest('form').submit();
+                    }
+                    });
+                });
+                });
             });
         </script>
     </body>

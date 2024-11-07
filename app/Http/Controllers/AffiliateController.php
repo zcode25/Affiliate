@@ -8,11 +8,16 @@ use Illuminate\Http\Request;
 
 class AffiliateController extends Controller
 {
-    public function registeredAffiliate() {
+    public function registrationAffiliate() {
+        $title = 'Registration Affiliate!';
+        $text = "Are you sure?";
+        confirmDelete($title, $text);
 
-        $affiliates = Affiliate::where('status', 'pending')->get();
-        return view('affiliate.registered', [
-            'affiliates' => $affiliates
+        $registrations = Affiliate::where('status', 'pending')->get();
+        $registrationHistories = Affiliate::all();
+        return view('affiliate.registration', [
+            'registrations' => $registrations,
+            'registrationHistories' => $registrationHistories
         ]);
     }
 
@@ -21,7 +26,7 @@ class AffiliateController extends Controller
         $affiliate->status = 'active';
         $affiliate->save();
 
-        return redirect()->route('affiliate.registered')->with('success', 'Affiliate account successfully activated.');
+        return redirect()->route('affiliate.registration')->with('success', 'Affiliate account successfully activated.');
     }
 
     public function rejectAffiliate($id) {
@@ -29,6 +34,6 @@ class AffiliateController extends Controller
         $affiliate->status = 'reject';
         $affiliate->save();
 
-        return redirect()->route('affiliate.registered')->with('success', 'Affiliate account has been rejected.');
+        return redirect()->route('affiliate.registration')->with('success', 'Affiliate account has been rejected.');
     }
 }

@@ -14,7 +14,7 @@ Route::get('/', function() {
 
 Route::controller(AffiliateController::class)->group(function() {
     route::get('/register', 'register')->name('affiliate.register');
-    route::get('/affiliate/registered', 'registeredAffiliate')->name('affiliate.registered')->middleware(['auth', 'role:Admin']);
+    route::get('/affiliate/registration', 'registrationAffiliate')->name('affiliate.registration')->middleware(['auth', 'role:Admin']);
     route::patch('/affiliate/{id}/active', 'activeAffiliate')->name('affiliate.active')->middleware(['auth', 'role:Admin']);
     route::patch('/affiliate/{id}/reject', 'rejectAffiliate')->name('affiliate.reject')->middleware(['auth', 'role:Admin']);
 });
