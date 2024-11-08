@@ -16,9 +16,21 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('affiliate.registration')" :active="request()->routeIs('affiliate*')">
+                    @if(Auth::user()->role === 'Affiliate')
+                    <x-nav-link :href="route('affiliate.link')" :active="request()->is('link')">
+                        {{ __('Affiliate Link') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::user()->role === 'Admin')
+                    <x-nav-link :href="route('affiliate.affiliate')" :active="request()->is('affiliate*')">
+                        {{ __('Affiliate') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::user()->role === 'Admin')
+                    <x-nav-link :href="route('affiliate.registration')" :active="request()->is('registration*')">
                         {{ __('Registration') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 

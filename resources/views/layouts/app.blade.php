@@ -43,8 +43,15 @@
                 });
             }
 
-            if (document.getElementById("search-table") && typeof simpleDatatables.DataTable !== 'undefined') {
-                const dataTable = new simpleDatatables.DataTable("#search-table", {
+            if (document.getElementById("affiliateDataTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#affiliateDataTable", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
+
+            if (document.getElementById("affiliateRegistrationHistoryTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#affiliateRegistrationHistoryTable", {
                     searchable: true,
                     sortable: false
                 });
@@ -103,6 +110,22 @@
                 });
                 });
             });
+        </script>
+        <script>
+            function copyToClipboard() {
+            var copyText = document.getElementById("affiliateLink");
+            copyText.select();
+            document.execCommand("copy");
+
+            // Tampilkan notifikasi SweetAlert setelah menyalin link
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Link telah disalin ke clipboard!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
         </script>
     </body>
 </html>

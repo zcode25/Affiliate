@@ -14,4 +14,24 @@ class Affiliate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function commissions()
+    {
+        return $this->hasMany(Commission::class);
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class);
+    }
+
+    public function clicks()
+    {
+        return $this->hasMany(AffiliateClick::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

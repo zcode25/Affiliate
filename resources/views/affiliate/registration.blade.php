@@ -68,22 +68,22 @@
               <h3 class="mb-5 font-bold text-xl">Affiliate Registration History</h3>
               
 
-              <table id="search-table">
+              <table id="affiliateRegistrationHistoryTable">
                 <thead>
                     <tr>
                         <th>
                             <span class="flex items-center">
-                                Company Name
+                                Name
                             </span>
                         </th>
                         <th>
                             <span class="flex items-center">
-                                Ticker
+                                Email
                             </span>
                         </th>
                         <th>
                             <span class="flex items-center">
-                                Stock Price
+                                Status
                             </span>
                         </th>
                     </tr>

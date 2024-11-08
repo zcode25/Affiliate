@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'affiliate',
+            'role' => 'Affiliate',
         ]);
 
         $affiliateCode = Str::random(10);
