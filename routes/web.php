@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AffiliateController;
+use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -29,11 +32,24 @@ Route::controller(AffiliateController::class)->group(function() {
     route::get('/link', 'link')->name('affiliate.link')->middleware(['auth', 'role:Affiliate']);
 });
 
+Route::controller(ProjectController::class)->group(function() {
+    route::get('/project', 'index')->name('project.index');
+    route::get('/project/detail/{project}', 'detail')->name('project.detail');
+    route::put('/project/update/{project}', 'update')->name('project.update');
+    route::delete('/project/destroy/{project}', 'destroy')->name('project.destroy');
+});
 
+Route::controller(CommissionController::class)->group(function() {
+    route::get('/commission', 'index')->name('commission.index');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::controller(DashboardController::class)->group(function() {
+    route::get('/dashboard', 'index')->name('dashboard')->middleware(['auth', 'verified']);
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

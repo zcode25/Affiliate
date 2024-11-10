@@ -56,6 +56,20 @@
                     sortable: false
                 });
             }
+
+            if (document.getElementById("affiliateClickTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#affiliateClickTable", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
+
+            if (document.getElementById("commissionTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#commissionTable", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>

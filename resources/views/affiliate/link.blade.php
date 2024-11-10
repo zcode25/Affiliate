@@ -7,12 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white mb-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h1 class="text-2xl font-semibold text-gray-800 mb-4">Link Afiliasi Saya</h1>
-                    <p class="text-gray-600 mb-1">Bagikan link afiliasi Anda di bawah ini untuk mendapatkan komisi dari setiap konversi.</p>
-                    
-                    @if ($affiliateLink)
+                    <h1 class="text-2xl font-semibold text-gray-800 mb-4">My Affiliate Link</h1>
+                    <p class="text-gray-600 mb-2">Share your affiliate link below to earn commission on every conversion.</p>
                         <div class="flex items-center mb-4">
                             <div class="w-10/12">
                                 <input 
@@ -25,16 +23,49 @@
                             </div>
                             <div class="w-2/12 pl-2">
                                 <button 
-                                    class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+                                    class="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                     onclick="copyToClipboard()"
                                 >
-                                    Salin Link
+                                    Copy
                                 </button>
                             </div>
                         </div>
-                    @else
-                        <p class="text-red-500">Anda belum memiliki kode afiliasi. Hubungi admin untuk informasi lebih lanjut.</p>
-                    @endif
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-5">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                  <h3 class="mb-5 font-bold text-xl">Affiliate Click</h3>
+                
+                  <table id="affiliateClickTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="flex items-center">
+                                    Affiliate Code
+                                </span>
+                            </th>
+                            <th>
+                                <span class="flex items-center">
+                                    IP Address
+                                </span>
+                            </th>
+                            <th>
+                                <span class="flex items-center">
+                                    Date Time
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($affiliateClick as $item)
+                          <tr>
+                            <td>{{ $item->affiliate->affiliate_code }}</td>
+                            <td>{{ $item->ip_address }}</td>
+                            <td>{{ $item->clicked_at }}</td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
                 </div>
             </div>
         </div>

@@ -20,11 +20,6 @@ class Affiliate extends Model
         return $this->hasMany(Commission::class);
     }
 
-    public function referrals()
-    {
-        return $this->hasMany(Referral::class);
-    }
-
     public function clicks()
     {
         return $this->hasMany(AffiliateClick::class);

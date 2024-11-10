@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Affiliate;
 use App\Models\User;
+use App\Models\Affiliate;
 use Illuminate\Http\Request;
+use App\Models\AffiliateClick;
 use Illuminate\Support\Facades\Auth;
 
 class AffiliateController extends Controller
@@ -49,11 +50,13 @@ class AffiliateController extends Controller
     {
         $user = Auth::user();
         $affiliateCode = $user->affiliate->affiliate_code;
-
         $affiliateLink = url('/landing?ref=' . $affiliateCode);
 
+        $affiliateClick = AffiliateClick::where('affiliate_id', Auth::user()->affiliate->id)->orderBy('clicked_at', 'desc')->get();
+
         return view('affiliate.link', [
-            'affiliateLink' => $affiliateLink
+            'affiliateLink' => $affiliateLink,
+            'affiliateClick' => $affiliateClick
         ]);
     }
 }

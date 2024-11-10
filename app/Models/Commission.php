@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Commision extends Model
+class Commission extends Model
 {
     protected $guarded = [];
     public $incrementing = true;
@@ -14,5 +14,9 @@ class Commision extends Model
         return $this->belongsTo(Affiliate::class);
     }
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
     
 }

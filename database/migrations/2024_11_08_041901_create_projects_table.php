@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('project_type');
             $table->text('project_description');
             $table->decimal('total_value', 10, 2)->nullable();
-            $table->enum('status', ['pending', 'completed', 'cancelled'])->default('pending');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

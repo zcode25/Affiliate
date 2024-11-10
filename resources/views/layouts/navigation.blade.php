@@ -21,6 +21,11 @@
                         {{ __('Affiliate Link') }}
                     </x-nav-link>
                     @endif
+                    
+                    <x-nav-link :href="route('project.index')" :active="request()->is('project*')">
+                        {{ __('Project') }}
+                    </x-nav-link>
+
                     @if(Auth::user()->role === 'Admin')
                     <x-nav-link :href="route('affiliate.affiliate')" :active="request()->is('affiliate*')">
                         {{ __('Affiliate') }}
@@ -31,6 +36,10 @@
                         {{ __('Registration') }}
                     </x-nav-link>
                     @endif
+
+                    <x-nav-link :href="route('commission.index')" :active="request()->is('commission*')">
+                        {{ __('Commission') }}
+                    </x-nav-link>
                 </div>
             </div>
 

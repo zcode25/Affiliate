@@ -14,6 +14,11 @@ class Project extends Model
         return $this->belongsTo(Affiliate::class);
     }
 
+    public function commissions()
+    {
+        return $this->hasMany(Commission::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
