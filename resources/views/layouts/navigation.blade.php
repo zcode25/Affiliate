@@ -40,6 +40,10 @@
                     <x-nav-link :href="route('commission.index')" :active="request()->is('commission*')">
                         {{ __('Commission') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('withdrawal.index')" :active="request()->is('withdrawal*')">
+                        {{ __('Withdrawal') }}
+                    </x-nav-link>
                 </div>
             </div>
 

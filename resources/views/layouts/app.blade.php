@@ -70,6 +70,13 @@
                     sortable: false
                 });
             }
+
+            if (document.getElementById("withdrawalTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#withdrawalTable", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>

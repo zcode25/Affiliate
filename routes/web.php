@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -38,6 +39,13 @@ Route::controller(ProjectController::class)->group(function() {
     route::put('/project/update/{project}', 'update')->name('project.update');
     route::delete('/project/destroy/{project}', 'destroy')->name('project.destroy');
 });
+
+Route::controller(WithdrawalController::class)->group(function() {
+    route::get('/withdrawal', 'index')->name('withdrawal.index');
+    route::post('/withdrawal/request', 'request')->name('withdrawal.request');
+    route::post('/withdrawal/{withdrawal}/process', 'processWithdrawal')->name('withdrawal.process');
+});
+
 
 Route::controller(CommissionController::class)->group(function() {
     route::get('/commission', 'index')->name('commission.index');
