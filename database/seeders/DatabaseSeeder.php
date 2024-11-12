@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@terasweb.id',
             'password' => bcrypt('password'),
-            'role' => 'Admin'
+            'role' => 'Admin',
+            'phone' => '081288228600'
         ]);
     }
 }

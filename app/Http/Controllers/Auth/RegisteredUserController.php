@@ -31,10 +31,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        // dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required', 'max:15'],
+            'instagram' => ['required', 'max:255'],
+            'facebook' => ['required', 'max:255'],
+            'tiktok' => ['required', 'max:255'],
         ]);
 
         $user = User::create([
@@ -42,6 +48,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'Affiliate',
+            'phone' => $request->phone,
+            'instagram' => $request->instagram,
+            'facebook' => $request->facebook,
+            'tiktok' => $request->tiktok,
         ]);
 
         $affiliateCode = Str::random(10);
