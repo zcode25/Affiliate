@@ -16,6 +16,30 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="instagram" :value="__('Instagram')" />
+            <x-text-input id="instagram" class="block mt-1 w-full" type="text" name="instagram" :value="old('instagram')" required autofocus autocomplete="instagram" />
+            <x-input-error :messages="$errors->get('instagram')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="facebook" :value="__('Facebook')" />
+            <x-text-input id="facebook" class="block mt-1 w-full" type="text" name="facebook" :value="old('facebook')" required autofocus autocomplete="facebook" />
+            <x-input-error :messages="$errors->get('facebook')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="tiktok" :value="__('TikTok')" />
+            <x-text-input id="tiktok" class="block mt-1 w-full" type="text" name="tiktok" :value="old('tiktok')" required autofocus autocomplete="tiktok" />
+            <x-input-error :messages="$errors->get('tiktok')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
