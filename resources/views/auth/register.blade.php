@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     <h1 class="font-semibold text-2xl text-center mb-3">Register</h1>
-    <p class="font-normal bg-slate-50 p-5 mb-3 rounded-md">Email and phone number are required to login to the TerasWeb Affiliate Portal</p>
+    <p class="text-sm bg-slate-100 text-gray-700 p-3 mb-3 rounded-md"><strong>Name</strong> and <strong>Phone Number</strong> are required to login to the TerasWeb Affiliate Portal</p>
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -26,7 +26,7 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
-        <p class="font-normal bg-slate-50 p-5 my-3 rounded-md">Enter your social media accounts to use in the TerasWeb affiliate program</p>
+        <p class="text-sm bg-slate-100 text-gray-700 p-3 my-3 rounded-md">Enter your <strong> Social Media Accounts </strong> to use in the TerasWeb affiliate program</p>
 
         <div class="mt-4">
             <x-input-label for="instagram" :value="__('Instagram')" />
@@ -46,7 +46,7 @@
             <x-input-error :messages="$errors->get('tiktok')" class="mt-2" />
         </div>
 
-        <p class="font-normal bg-slate-50 p-5 my-3 rounded-md">Enter your strong password, minimum 8 characters.</p>
+        <p class="text-sm bg-slate-100 text-gray-700 p-3 my-3 rounded-md">Enter your strong password, minimum 8 characters.</p>
 
         <!-- Password -->
         <div class="mt-4">
@@ -69,6 +69,13 @@
                             name="password_confirmation" required autocomplete="new-password" placeholder="Confirm your password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center mt-4">
+            <input id="terms" type="checkbox" class="mr-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600" required>
+            <label for="terms" class="text-sm text-gray-600 dark:text-gray-400">
+                Saya menyetujui <a href="{{ route('terms') }}" class="underline hover:text-gray-900 dark:hover:text-gray-100">Syarat dan Ketentuan</a> serta <a href="{{ route('privacy') }}" class="underline hover:text-gray-900 dark:hover:text-gray-100">Kebijakan Privasi</a>
+            </label>
         </div>
 
         <div class="flex items-center justify-end mt-4">

@@ -19,7 +19,8 @@
             <div class="mt-10">
                 <a href="/">
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                    <img class="h-auto mx-auto" style="max-width: 20%;" src="/img/logo.png" alt="image description">
+                    {{-- <img class="h-auto mx-auto" style="max-width: 20%;" src="/img/logo.png" alt="image description"> --}}
+                    <h1 class="text-3xl font-bold text-purple-600">TerasWeb Affiliate</h1>
                 </a>
             </div>
 
