@@ -26,6 +26,16 @@
                           </th>
                           <th>
                               <span class="flex items-center">
+                                  Phone
+                              </span>
+                          </th>
+                          <th>
+                              <span class="flex items-center">
+                                  Social Media
+                              </span>
+                          </th>
+                          <th>
+                              <span class="flex items-center">
                                   Status
                               </span>
                           </th>
@@ -41,6 +51,27 @@
                         <tr>
                           <td>{{ $item->user->name }}</td>
                           <td>{{ $item->user->email }}</td>
+                          <td>{{ $item->user->phone }}</td>
+                          <td>
+                            <p>
+                                <i class="fab fa-instagram text-pink-600"></i> 
+                                <a href="https://instagram.com/{{ $item->user->instagram }}" target="_blank" class="hover:underline">
+                                    {{ $item->user->instagram }}
+                                </a>
+                            </p>
+                            <p>
+                                <i class="fab fa-facebook text-blue-600"></i> 
+                                <a href="https://facebook.com/{{ $item->user->facebook }}" target="_blank" class="hover:underline">
+                                    {{ $item->user->facebook }}
+                                </a>
+                            </p>
+                            <p>
+                                <i class="fab fa-tiktok text-black"></i> 
+                                <a href="https://tiktok.com/@{{ $item->user->tiktok }}" target="_blank" class="hover:underline">
+                                    {{ $item->user->tiktok }}
+                                </a>
+                            </p>
+                          </td>
                           <td><span class="bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{ ucfirst(trans($item->status)) }}</span></td>
                           {{-- <td>{{ $item->status }}</td> --}}
                           <td>
@@ -83,6 +114,16 @@
                         </th>
                         <th>
                             <span class="flex items-center">
+                                Phone
+                            </span>
+                        </th>
+                        <th>
+                            <span class="flex items-center">
+                                Social Media
+                            </span>
+                        </th>
+                        <th>
+                            <span class="flex items-center">
                                 Status
                             </span>
                         </th>
@@ -93,6 +134,27 @@
                       <tr>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->user->email }}</td>
+                        <td>{{ $item->user->phone }}</td>
+                        <td>
+                          <p>
+                              <i class="fab fa-instagram text-pink-600"></i> 
+                              <a href="https://instagram.com/{{ $item->user->instagram }}" target="_blank" class="hover:underline">
+                                  {{ $item->user->instagram }}
+                              </a>
+                          </p>
+                          <p>
+                              <i class="fab fa-facebook text-blue-600"></i> 
+                              <a href="https://facebook.com/{{ $item->user->facebook }}" target="_blank" class="hover:underline">
+                                  {{ $item->user->facebook }}
+                              </a>
+                          </p>
+                          <p>
+                              <i class="fab fa-tiktok text-black"></i> 
+                              <a href="https://tiktok.com/@{{ $item->user->tiktok }}" target="_blank" class="hover:underline">
+                                  {{ $item->user->tiktok }}
+                              </a>
+                          </p>
+                        </td>
                         @if ($item->status == 'pending')
                           <td><span class="bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{ ucfirst(trans($item->status)) }}</span></td>
                         @elseif ($item->status == 'active')

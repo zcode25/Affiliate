@@ -31,11 +31,6 @@
                         {{ __('Affiliate') }}
                     </x-nav-link>
                     @endif
-                    @if(Auth::user()->role === 'Admin')
-                    <x-nav-link :href="route('affiliate.registration')" :active="request()->is('registration*')">
-                        {{ __('Registration') }}
-                    </x-nav-link>
-                    @endif
 
                     <x-nav-link :href="route('commission.index')" :active="request()->is('commission*')">
                         {{ __('Commission') }}
@@ -44,6 +39,12 @@
                     <x-nav-link :href="route('withdrawal.index')" :active="request()->is('withdrawal*')">
                         {{ __('Withdrawal') }}
                     </x-nav-link>
+
+                    @if(Auth::user()->role === 'Admin')
+                    <x-nav-link :href="route('affiliate.registration')" :active="request()->is('registration*')">
+                        {{ __('Registration') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

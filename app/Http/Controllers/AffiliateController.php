@@ -15,8 +15,8 @@ class AffiliateController extends Controller
         $text = "Are you sure?";
         confirmDelete($title, $text);
 
-        $registrations = Affiliate::where('status', 'pending')->get();
-        $registrationHistories = Affiliate::all();
+        $registrations = Affiliate::where('status', 'pending')->orderBy('created_at', 'desc')->get();
+        $registrationHistories = Affiliate::orderBy('created_at', 'desc')->get();
         return view('affiliate.registration', [
             'registrations' => $registrations,
             'registrationHistories' => $registrationHistories

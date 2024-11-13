@@ -30,19 +30,19 @@
 
         <div class="mt-4">
             <x-input-label for="instagram" :value="__('Instagram')" />
-            <x-text-input id="instagram" class="block mt-1 w-full" type="text" name="instagram" :value="old('instagram')" placeholder="Enter your instagram account" required autofocus autocomplete="instagram" />
+            <x-text-input id="instagram" class="block mt-1 w-full" type="text" name="instagram" :value="old('instagram')" placeholder="Enter your instagram account (e.g., @username)" required autofocus autocomplete="instagram" />
             <x-input-error :messages="$errors->get('instagram')" class="mt-2" />
         </div>
 
         <div class="mt-4">
             <x-input-label for="facebook" :value="__('Facebook')" />
-            <x-text-input id="facebook" class="block mt-1 w-full" type="text" name="facebook" :value="old('facebook')" placeholder="Enter your facebook account" required autofocus autocomplete="facebook" />
+            <x-text-input id="facebook" class="block mt-1 w-full" type="text" name="facebook" :value="old('facebook')" placeholder="Enter your facebook account (e.g., @username)" required autofocus autocomplete="facebook" />
             <x-input-error :messages="$errors->get('facebook')" class="mt-2" />
         </div>
 
         <div class="mt-4">
             <x-input-label for="tiktok" :value="__('TikTok')" />
-            <x-text-input id="tiktok" class="block mt-1 w-full" type="text" name="tiktok" :value="old('tiktok')" placeholder="Enter your tiktok account" required autofocus autocomplete="tiktok" />
+            <x-text-input id="tiktok" class="block mt-1 w-full" type="text" name="tiktok" :value="old('tiktok')" placeholder="Enter your tiktok account (e.g., @username)" required autofocus autocomplete="tiktok" />
             <x-input-error :messages="$errors->get('tiktok')" class="mt-2" />
         </div>
 
@@ -74,18 +74,19 @@
         <div class="flex items-center mt-4">
             <input id="terms" type="checkbox" class="mr-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600" required>
             <label for="terms" class="text-sm text-gray-600 dark:text-gray-400">
-                Saya menyetujui <a href="{{ route('terms') }}" class="underline hover:text-gray-900 dark:hover:text-gray-100">Syarat dan Ketentuan</a> serta <a href="{{ route('privacy') }}" class="underline hover:text-gray-900 dark:hover:text-gray-100">Kebijakan Privasi</a>
+                I agree to the <a target="_Blank" href="{{ route('terms') }}" class="underline hover:text-gray-900 dark:hover:text-gray-100">Terms and Condition</a> and <a target="_Blank" href="{{ route('privacy') }}" class="underline hover:text-gray-900 dark:hover:text-gray-100">Privacy Policy</a>
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="text-center mt-4">
+            <button class="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm py-2.5 mb-2">
+                Register
+            </button>
+        </div>
+        <div class="mt-1 text-center">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                {{ __("Already have an account?") }}
             </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
         </div>
     </form>
 </x-guest-layout>

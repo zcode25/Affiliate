@@ -3,63 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syarat dan Ketentuan TerasWeb Affiliate</title>
+    <title>TerasWeb Affiliate Terms and Conditions</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
     <div class="max-w-4xl mx-auto px-6 py-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Syarat dan Ketentuan TerasWeb Affiliate</h1>
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">TerasWeb Affiliate Terms and Conditions</h1>
         <p class="text-gray-600 mb-8 text-center">
-            Terima kasih telah bergabung dengan program afiliasi TerasWeb. Dengan mendaftar dan menggunakan program ini, Anda setuju untuk mematuhi syarat dan ketentuan berikut.
+            Thank you for joining the TerasWeb affiliate program. By registering and using this program, you agree to abide by the following terms and conditions.
         </p>
 
         <!-- Card Container -->
         <div class="space-y-6">
             <!-- Section 1 -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">1. Pendaftaran dan Kelayakan</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">1. Registration and Eligibility</h2>
                 <p class="text-gray-600">
-                    Anda harus berusia minimal 18 tahun untuk bergabung dalam program afiliasi ini. TerasWeb memiliki hak untuk menerima atau menolak permohonan Anda tanpa pemberitahuan.
+                    You must be at least 18 years old to join this affiliate program. TerasWeb has the right to accept or reject your application without notice.
                 </p>
             </div>
 
             <!-- Section 2 -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">2. Komisi dan Pembayaran</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">2. Commission and Payment</h2>
                 <p class="text-gray-600">
-                    Komisi akan dibayarkan berdasarkan penjualan atau konversi yang dihasilkan dari tautan afiliasi Anda. Pembayaran komisi akan dilakukan setiap akhir bulan, dengan syarat total komisi mencapai jumlah minimum.
+                    Commission will be paid based on sales or conversions generated from your affiliate link. Commission payments will be made at the end of each month, provided that the total commission reaches a minimum amount.
                 </p>
             </div>
 
             <!-- Section 3 -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">3. Penggunaan Tautan Afiliasi</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">3. Use of Affiliate Links</h2>
                 <p class="text-gray-600">
-                    Anda setuju untuk tidak memanipulasi tautan afiliasi atau mencoba mendapatkan komisi melalui tindakan curang, termasuk namun tidak terbatas pada klik otomatis, penipuan, atau misrepresentasi.
+                    You agree not to manipulate affiliate links or attempt to earn commissions through fraudulent actions, including but not limited to automated clicking, fraud, or misrepresentation.
                 </p>
             </div>
 
             <!-- Section 4 -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">4. Hak dan Tanggung Jawab TerasWeb</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">4. TerasWeb Rights and Responsibilities</h2>
                 <p class="text-gray-600">
-                    TerasWeb berhak menghentikan keikutsertaan Anda dalam program afiliasi kapan saja jika dianggap melanggar ketentuan ini. Kami juga dapat memperbarui syarat dan ketentuan ini kapan saja dengan pemberitahuan melalui email atau di halaman ini.
+                    TerasWeb has the right to terminate your participation in the affiliate program at any time if you are deemed to have violated these provisions. We may also update these terms and conditions at any time by notification via email or on this page.
                 </p>
             </div>
 
             <!-- Section 5 -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">5. Pembaruan Syarat dan Ketentuan</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">5. Updates to Terms and Conditions</h2>
                 <p class="text-gray-600">
-                    TerasWeb dapat memperbarui syarat dan ketentuan ini dari waktu ke waktu. Anda dianjurkan untuk memeriksa halaman ini secara berkala untuk mengetahui pembaruan terbaru.
+                    TerasWeb may update these terms and conditions from time to time. You are advised to check this page periodically for the latest updates.
                 </p>
             </div>
 
             <!-- Section 6 -->
             <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">6. Kontak Kami</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-2">6. Contact Us</h2>
                 <p class="text-gray-600">
-                    Jika Anda memiliki pertanyaan tentang syarat dan ketentuan ini, silakan hubungi kami melalui email di <a href="mailto:support@terasweb.com" class="text-indigo-600 hover:underline">support@terasweb.com</a>.
+                    If you have any questions about these terms and conditions, please contact us via email at <a href="mailto:info@terasweb.com" class="text-indigo-600 hover:underline">info@terasweb.com</a>.
                 </p>
             </div>
         </div>
