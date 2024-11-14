@@ -53,19 +53,19 @@
                           <td>{{ $item->user->email }}</td>
                           <td>{{ $item->user->phone }}</td>
                           <td>
-                            <p>
+                            <p class="mb-1">
                                 <i class="fab fa-instagram text-pink-600"></i> 
                                 <a href="https://instagram.com/{{ $item->user->instagram }}" target="_blank" class="hover:underline">
                                     {{ $item->user->instagram }}
                                 </a>
                             </p>
-                            <p>
+                            <p class="mb-1">
                                 <i class="fab fa-facebook text-blue-600"></i> 
                                 <a href="https://facebook.com/{{ $item->user->facebook }}" target="_blank" class="hover:underline">
                                     {{ $item->user->facebook }}
                                 </a>
                             </p>
-                            <p>
+                            <p class="mb-1">
                                 <i class="fab fa-tiktok text-black"></i> 
                                 <a href="https://tiktok.com/@{{ $item->user->tiktok }}" target="_blank" class="hover:underline">
                                     {{ $item->user->tiktok }}
@@ -136,19 +136,19 @@
                         <td>{{ $item->user->email }}</td>
                         <td>{{ $item->user->phone }}</td>
                         <td>
-                          <p>
+                          <p class="mb-1">
                               <i class="fab fa-instagram text-pink-600"></i> 
                               <a href="https://instagram.com/{{ $item->user->instagram }}" target="_blank" class="hover:underline">
                                   {{ $item->user->instagram }}
                               </a>
                           </p>
-                          <p>
+                          <p class="mb-1">
                               <i class="fab fa-facebook text-blue-600"></i> 
                               <a href="https://facebook.com/{{ $item->user->facebook }}" target="_blank" class="hover:underline">
                                   {{ $item->user->facebook }}
                               </a>
                           </p>
-                          <p>
+                          <p class="mb-1">
                               <i class="fab fa-tiktok text-black"></i> 
                               <a href="https://tiktok.com/@{{ $item->user->tiktok }}" target="_blank" class="hover:underline">
                                   {{ $item->user->tiktok }}
