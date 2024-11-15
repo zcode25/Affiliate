@@ -53,6 +53,7 @@ Route::controller(CommissionController::class)->group(function() {
 
 Route::controller(DashboardController::class)->group(function() {
     route::get('/dashboard', 'index')->name('dashboard')->middleware(['auth', 'verified']);
+    route::get('/dashboardAdmin', 'admin')->name('dashboardAdmin')->middleware(['auth', 'verified']);
 });
 
 // Route::get('/dashboard', function () {

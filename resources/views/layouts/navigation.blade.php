@@ -17,6 +17,10 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('dashboardAdmin')" :active="request()->routeIs('dashboardAdmin')">
+                        {{ __('Dashboard Admin') }}
+                    </x-nav-link>
+
                     @if(Auth::user()->role === 'Admin')
                     <x-nav-link :href="route('affiliate.registration')" :active="request()->is('registration*')">
                         {{ __('Registration') }}
