@@ -11,7 +11,7 @@
           <!-- Card untuk Total Commission -->
           <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-5">
               <div class="p-6 text-gray-900 dark:text-gray-100">
-                  <h3 class="mb-2 font-bold text-xl">Total Komisi</h3>
+                  <h3 class="mb-2 font-bold text-xl">Total Commission</h3>
                   <p class="text-3xl font-bold text-purple-500">
                     Rp {{ number_format($totalCommission, 0, ',', '.') }}
                   </p>

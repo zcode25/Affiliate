@@ -143,8 +143,8 @@
             // Tampilkan notifikasi SweetAlert setelah menyalin link
             Swal.fire({
                 icon: 'success',
-                title: 'Berhasil',
-                text: 'Link telah disalin ke clipboard!',
+                title: 'Success',
+                text: 'Link has been copied to clipboard!',
                 showConfirmButton: false,
                 timer: 1500
             });

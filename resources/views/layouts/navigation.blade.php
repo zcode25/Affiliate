@@ -13,13 +13,17 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @if(Auth::user()->role === 'Affiliate')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-
+                    @endif
+                    
+                    @if(Auth::user()->role === 'Admin')
                     <x-nav-link :href="route('dashboardAdmin')" :active="request()->routeIs('dashboardAdmin')">
-                        {{ __('Dashboard Admin') }}
+                        {{ __('Dashboard') }}
                     </x-nav-link>
+                    @endif
 
                     @if(Auth::user()->role === 'Admin')
                     <x-nav-link :href="route('affiliate.registration')" :active="request()->is('registration*')">

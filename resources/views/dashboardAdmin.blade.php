@@ -11,7 +11,7 @@
           <!-- Kartu Statistik -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-                  <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Total Komisi Dibayarkan</h3>
+                  <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Total Commission Paid</h3>
                   <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">Rp {{ number_format($totalCommissionPaid, 0, ',', '.') }}</p>
               </div>
               <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
@@ -30,7 +30,7 @@
 
           <!-- Grafik Performa Komisi per Bulan -->
           <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow mt-6">
-              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Performa Komisi per Bulan</h3>
+              <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Commission Performance per Month</h3>
               <canvas id="commissionChart"></canvas>
           </div>
       </div>

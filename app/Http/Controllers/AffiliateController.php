@@ -51,12 +51,33 @@ class AffiliateController extends Controller
         $user = Auth::user();
         $affiliateCode = $user->affiliate->affiliate_code;
         $affiliateLink = url('/landing?ref=' . $affiliateCode);
-
-        $affiliateClick = AffiliateClick::where('affiliate_id', Auth::user()->affiliate->id)->orderBy('clicked_at', 'desc')->get();
-
+    
+        $affiliateId = $user->affiliate->id;
+    
+        // Mendapatkan semua klik
+        $affiliateClick = AffiliateClick::where('affiliate_id', $affiliateId)
+            ->orderBy('clicked_at', 'desc')
+            ->get();
+    
+        // Total klik
+        $totalClicks = $affiliateClick->count();
+    
+        // Klik minggu ini
+        $clicksThisWeek = AffiliateClick::where('affiliate_id', $affiliateId)
+            ->whereBetween('clicked_at', [now()->startOfWeek(), now()->endOfWeek()])
+            ->count();
+    
+        // Klik bulan ini
+        $clicksThisMonth = AffiliateClick::where('affiliate_id', $affiliateId)
+            ->whereBetween('clicked_at', [now()->startOfMonth(), now()->endOfMonth()])
+            ->count();
+    
         return view('affiliate.link', [
             'affiliateLink' => $affiliateLink,
-            'affiliateClick' => $affiliateClick
+            'affiliateClick' => $affiliateClick,
+            'totalClicks' => $totalClicks,
+            'clicksThisWeek' => $clicksThisWeek,
+            'clicksThisMonth' => $clicksThisMonth,
         ]);
     }
 }

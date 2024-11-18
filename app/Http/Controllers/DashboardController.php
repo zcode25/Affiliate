@@ -15,39 +15,35 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $affiliate = Auth::user()->affiliate;
 
-        if(Auth::user()->role == 'Affiliate') {
-            $clicksPerDay = AffiliateClick::selectRaw('DATE(created_at) as date, COUNT(*) as clicks')
-                ->where('affiliate_id', Auth::user()->affiliate->id) // Filter by logged-in affiliate
-                ->groupBy('date')
-                ->orderBy('date', 'asc')
-                ->get();
+        $totalCommission = Commission::where('affiliate_id', $affiliate->id)->sum('amount');
 
-            $totalProjects = Project::where('affiliate_id', Auth::user()->affiliate->id)->count();
-            $totalClicks = AffiliateClick::where('affiliate_id', Auth::user()->affiliate->id)->count();
-            $projectStatus = Project::where('affiliate_id', Auth::user()->affiliate->id)
-                            ->selectRaw('status, COUNT(*) as count')
-                            ->groupBy('status')
-                            ->get();
-        } else {
-            $clicksPerDay = AffiliateClick::selectRaw('DATE(created_at) as date, COUNT(*) as clicks')
-                ->groupBy('date')
-                ->orderBy('date', 'asc')
-                ->get();
+        $totalWithdrawal = Withdrawal::where('affiliate_id', $affiliate->id)->sum('amount');
+        $pendingWithdrawals = Withdrawal::where('affiliate_id', $affiliate->id)
+            ->where('status', 'pending')
+            ->sum('amount');
+        $approvedWithdrawals = Withdrawal::where('affiliate_id', $affiliate->id)
+            ->where('status', 'approved')
+            ->sum('amount');
 
-            $totalProjects = Project::count();
-            $totalClicks = AffiliateClick::count();
-            $projectStatus = Project::selectRaw('status, COUNT(*) as count')
-                            ->groupBy('status')
-                            ->get();
-        }
-        
+        $commissionByMonth = Commission::selectRaw('SUM(amount) as total, MONTH(created_at) as month')
+            ->where('affiliate_id', $affiliate->id)
+            ->whereYear('created_at', Carbon::now()->year)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get()
+            ->map(function ($item) {
+                $item->month_name = date("F", mktime(0, 0, 0, $item->month, 10));
+                return $item;
+            });
 
         return view('dashboard', [
-            'totalProjects' => $totalProjects,
-            'totalClicks' => $totalClicks,
-            'clicksPerDay' => $clicksPerDay,
-            'projectStatus' => $projectStatus,
+            'totalCommission' => $totalCommission,
+            'totalWithdrawal' => $totalWithdrawal,
+            'pendingWithdrawals' => $pendingWithdrawals,
+            'approvedWithdrawals' => $approvedWithdrawals,
+            'commissionByMonth' => $commissionByMonth,
         ]);
     }
 

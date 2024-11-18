@@ -31,23 +31,26 @@ class AuthenticatedSessionController extends Controller
 
             // Cek apakah pengguna adalah affiliate dan statusnya 'pending' atau 'reject'
             if ($user->affiliate && $user->affiliate->status === 'pending') {
-                Auth::logout(); // Logout pengguna agar tidak masuk ke sesi login
+                Auth::logout();
 
                 return redirect()->route('login')->withErrors([
                     'email' => 'Your account is still pending approval and cannot log in at this time.',
                 ]);
             } elseif ($user->affiliate && $user->affiliate->status === 'reject') {
-                Auth::logout(); // Logout pengguna agar tidak masuk ke sesi login
+                Auth::logout();
 
                 return redirect()->route('login')->withErrors([
                     'email' => 'Your account has been rejected and cannot log in.',
                 ]);
             }
 
-            // Lakukan regenerasi sesi dan arahkan ke dashboard jika lolos verifikasi
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard', absolute: false));
+            if($user->role == 'Admin') {
+                return redirect()->intended(route('dashboardAdmin', absolute: false));
+            } else {
+                return redirect()->intended(route('dashboard', absolute: false));
+            }
         }
 
         // Jika kredensial tidak valid

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {
     return view('auth.login');
-})->middleware('guest')->name('login');
+})->middleware('role.redirect')->name('login');
 
 
 Route::controller(LandingController::class)->group(function() {
@@ -52,8 +52,8 @@ Route::controller(CommissionController::class)->group(function() {
 });
 
 Route::controller(DashboardController::class)->group(function() {
-    route::get('/dashboard', 'index')->name('dashboard')->middleware(['auth', 'verified']);
-    route::get('/dashboardAdmin', 'admin')->name('dashboardAdmin')->middleware(['auth', 'verified']);
+    route::get('/dashboard', 'index')->name('dashboard')->middleware(['auth', 'role:Affiliate']);
+    route::get('/dashboardAdmin', 'admin')->name('dashboardAdmin')->middleware(['auth', 'role:Admin']);
 });
 
 // Route::get('/dashboard', function () {

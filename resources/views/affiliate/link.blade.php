@@ -7,16 +7,39 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-5">
+                <!-- Total Commission -->
+                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
+                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Clicks This Week</h3>
+                    <p class="text-2xl font-bold text-purple-600 dark:text-white">
+                        {{ $clicksThisWeek }}
+                    </p>
+                </div>
+                <!-- Total Withdrawal -->
+                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
+                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Clicks This Month</h3>
+                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-200">
+                        {{ $clicksThisMonth }}
+                    </p>
+                </div>
+                <!-- Pending Withdrawals -->
+                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
+                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Clicks</h3>
+                    <p class="text-2xl font-bold ttext-gray-800 dark:text-gray-200">
+                        {{ $totalClicks }}
+                    </p>
+                </div>
+            </div>
             <div class="bg-white mb-5 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h1 class="text-2xl font-semibold text-gray-800 mb-4">My Affiliate Link</h1>
+                    <h1 class="text-xl font-semibold text-gray-800 mb-4">My Affiliate Link</h1>
                     <p class="text-gray-600 mb-2">Share your affiliate link below to earn commission on every conversion.</p>
                         <div class="flex items-center mb-4">
                             <div class="w-10/12">
                                 <input 
                                     id="affiliateLink" 
                                     type="text" 
-                                    class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                    class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500" 
                                     value="{{ $affiliateLink }}" 
                                     readonly
                                 />

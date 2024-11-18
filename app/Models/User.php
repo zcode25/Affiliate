@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Affiliate::class);
     }
+
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
 }
