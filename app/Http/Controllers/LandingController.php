@@ -16,7 +16,7 @@ class LandingController extends Controller
         $affiliate = Affiliate::where('affiliate_code', $affiliateCode)->first();
         $now = now();
 
-        $dailyClickLimit = 10;
+        $dailyClickLimit = 100;
 
         if ($affiliate) {
             $clickCountToday = AffiliateClick::where('affiliate_id', $affiliate->id)
