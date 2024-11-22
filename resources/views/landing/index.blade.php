@@ -49,12 +49,12 @@
                     <p class="text-gray-600 mt-4">Kami dapat membuat website yang menampilkan karya dan proyek terbaik kamu, membantu menarik perhatian calon klien dengan keahlian kamu.</p>
                 </div>
                 <div class="bg-white shadow-lg rounded-lg p-8 text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800">Optimasi SEO</h3>
-                    <p class="text-gray-600 mt-4">Meningkatkan visibilitas website di mesin pencari untuk menjangkau lebih banyak pelanggan.</p>
+                    <h3 class="text-2xl font-semibold text-gray-800">Company Profile</h3>
+                    <p class="text-gray-600 mt-4">Kami dapat membuat website yang memperkenalkan bisnis kamu, menampilkan informasi lengkap tentang visi, misi, dan layanan untuk membangun kepercayaan.</p>
                 </div>
                 <div class="bg-white shadow-lg rounded-lg p-8 text-center">
-                    <h3 class="text-2xl font-semibold text-gray-800">Keamanan Terjamin</h3>
-                    <p class="text-gray-600 mt-4">Perlindungan data dan privasi untuk kenyamanan Anda dan pelanggan Anda.</p>
+                    <h3 class="text-2xl font-semibold text-gray-800">Website Custom</h3>
+                    <p class="text-gray-600 mt-4">Kami dapat merancang website sesuai kebutuhan kamu, dengan fitur dan desain yang dapat menciptakan pengalaman pengguna yang baik.</p>
                 </div>
             </div>
         </div>
