@@ -53,7 +53,7 @@ class DashboardController extends Controller
         $totalCommissionPaid = Commission::sum('amount'); // Total komisi yang sudah dibayarkan
         $totalWithdrawal = Withdrawal::sum('amount'); // Total nilai penarikan yang diajukan
         $pendingWithdrawals = Withdrawal::where('status', 'pending')->count(); // Jumlah withdrawal yang pending
-        $totalAffiliates = Affiliate::count(); // Jumlah affiliate
+        $totalAffiliates = Affiliate::where('status', 'active')->count(); // Jumlah affiliate
         $totalTransactions = Commission::count(); // Jumlah transaksi yang menghasilkan komisi
     
         // Top Affiliate berdasarkan komisi tertinggi

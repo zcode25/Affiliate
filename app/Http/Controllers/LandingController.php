@@ -16,7 +16,7 @@ class LandingController extends Controller
         $affiliate = Affiliate::where('affiliate_code', $affiliateCode)->first();
         $now = now();
 
-        $dailyClickLimit = 100;
+        $dailyClickLimit = 10000;
 
         if ($affiliate) {
             $clickCountToday = AffiliateClick::where('affiliate_id', $affiliate->id)
@@ -67,7 +67,7 @@ class LandingController extends Controller
             'project_description' => $request->input('project_description'),
         ]);
 
-        Alert::success('Sukses', 'Proyek Anda berhasil diajukan!');
+        Alert::success('Success', 'Proyek kamu berhasil diajukan! Tim kami akan segera menghubungi kamu, mohon ditunggu ya..');
 
         return redirect()->back();
     }

@@ -43,15 +43,23 @@
                         <span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{{ ucfirst($project->project_type) }}</span>
                         <span class="bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{ ucfirst(trans($project->status)) }}</span>
                       </div>
-                      @if ($project->status === 'deal')
                       <hr class="mb-3 h-px bg-gray-200 border-0 dark:bg-gray-700">
                       <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                        <span class="font-semibold">Total Value:</span> Rp {{ number_format($project->total_value, 0, ',', '.') }}
+                        <span class="font-semibold">Total Value:</span> 
+                        @if($project->status === 'deal')
+                          Rp {{ number_format($project->total_value, 0, ',', '.') }}
+                        @else
+                          -
+                        @endif  
                       </p>
                       <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                        <span class="font-semibold">Commission:</span> Rp {{ number_format($project->total_value * 0.35, 0, ',', '.') }}
+                        <span class="font-semibold">Commission:</span> 
+                        @if($project->status === 'deal')
+                          Rp {{ number_format($project->total_value * 0.35, 0, ',', '.') }}
+                        @else
+                          -
+                        @endif 
                       </p>
-                      @endif
                       <hr class="mb-3 h-px bg-gray-200 border-0 dark:bg-gray-700">
                       <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
                         <span class="font-semibold">Affiliate:</span> {{ $project->affiliate->user->name}}
