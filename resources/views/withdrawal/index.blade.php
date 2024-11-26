@@ -23,7 +23,7 @@
 
                     <!-- Remaining Payment Card -->
                     <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
-                        <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Remaining Amount</p>
+                        <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Commission Balance</p>
                         <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($remainingAmount, 0, ',', '.') }}</p>
                     </div>
 

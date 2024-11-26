@@ -7,16 +7,26 @@
 
   <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          
-          <!-- Card untuk Total Commission -->
-          <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-5">
-              <div class="p-6 text-gray-900 dark:text-gray-100">
-                  <h3 class="mb-2 font-bold text-xl">Total Commission</h3>
-                  <p class="text-3xl font-bold text-purple-500">
-                    Rp {{ number_format($totalCommission, 0, ',', '.') }}
-                  </p>
-              </div>
-          </div>
+
+        
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-5">
+                    
+            <!-- Total Withdrawal Card -->
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission</p>
+                <p class="text-2xl font-bold text-purple-600 dark:text-white">Rp {{ number_format($totalCommission, 0, ',', '.') }}</p>
+            </div>
+
+            
+
+            <!-- Remaining Payment Card -->
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Commission Balance</p>
+                <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($remainingAmount, 0, ',', '.') }}</p>
+            </div>
+
+            
+        </div>
 
           
           <!-- Tabel Commission -->

@@ -15,12 +15,10 @@ class WithdrawalController extends Controller
         $affiliate = Auth::user()->affiliate;
         
         if ($affiliate) {
-            // Ambil semua withdrawal yang dimiliki affiliate
             $withdrawals = Withdrawal::where('affiliate_id', $affiliate->id)
                 ->orderBy('requested_at', 'desc')
                 ->get();
             
-            // Hitung total komisi yang dimiliki affiliate
             $totalCommission = Commission::where('affiliate_id', $affiliate->id)->sum('amount');
             
             // Hitung total penarikan yang sudah diajukan affiliate

@@ -41,7 +41,11 @@
                       </h3>
                       <div class="mb-3">
                         <span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{{ ucfirst($project->project_type) }}</span>
+                        @if($project->status === 'deal')
+                        <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ ucfirst(trans($project->status)) }}</span>
+                        @else
                         <span class="bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{ ucfirst(trans($project->status)) }}</span>
+                        @endif
                       </div>
                       <hr class="mb-3 h-px bg-gray-200 border-0 dark:bg-gray-700">
                       <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
