@@ -19,7 +19,7 @@ class DashboardController extends Controller
 
         $totalCommission = Commission::where('affiliate_id', $affiliate->id)->sum('amount');
 
-        $totalWithdrawal = Withdrawal::where('affiliate_id', $affiliate->id)->sum('amount');
+        $totalWithdrawal = Withdrawal::where('affiliate_id', $affiliate->id)->where('status', 'success')->sum('amount');
         $pendingWithdrawals = Withdrawal::where('affiliate_id', $affiliate->id)
             ->where('status', 'pending')
             ->sum('amount');
@@ -49,20 +49,17 @@ class DashboardController extends Controller
 
     public function admin()
     {
-        // Statistik Utama
-        $totalCommissionPaid = Commission::sum('amount'); // Total komisi yang sudah dibayarkan
-        $totalWithdrawal = Withdrawal::sum('amount'); // Total nilai penarikan yang diajukan
-        $pendingWithdrawals = Withdrawal::where('status', 'pending')->count(); // Jumlah withdrawal yang pending
-        $totalAffiliates = Affiliate::where('status', 'active')->count(); // Jumlah affiliate
-        $totalTransactions = Commission::count(); // Jumlah transaksi yang menghasilkan komisi
-    
-        // Top Affiliate berdasarkan komisi tertinggi
+        $totalCommissionPaid = Commission::sum('amount');
+        $totalWithdrawal =  Withdrawal::where('status', 'approved')->sum('amount');
+        $pendingWithdrawals = Withdrawal::where('status', 'pending')->count();
+        $totalAffiliates = Affiliate::where('status', 'active')->count();
+        $totalTransactions = Commission::count();
+
         $topAffiliates = Affiliate::withSum('commissions', 'amount')
             ->orderByDesc('commissions_sum_amount')
             ->take(5)
             ->get();
-        
-        // Statistik Performa berdasarkan waktu
+
         $commissionByMonth = Commission::selectRaw('SUM(amount) as total, MONTH(created_at) as month')
             ->whereYear('created_at', Carbon::now()->year)
             ->groupBy('month')
@@ -75,13 +72,11 @@ class DashboardController extends Controller
         
         $withdrawals = Withdrawal::orderBy('requested_at', 'desc')->get();
     
-        // Statistik tambahan untuk admin
         $totalCommission = Commission::sum('amount'); // Total komisi
         $totalPendingAmount = Withdrawal::where('status', 'pending')->sum('amount'); // Total withdrawal pending
         $totalApprovedWithdrawal = Withdrawal::where('status', 'approved')->sum('amount'); // Total withdrawal yang disetujui
         $remainingAmount = $totalCommission - $totalApprovedWithdrawal; // Sisa pembayaran komisi
     
-        // Notifikasi pengajuan withdrawal baru
         $recentWithdrawals = Withdrawal::where('status', 'pending')
             ->orderBy('requested_at', 'desc')
             ->take(5)

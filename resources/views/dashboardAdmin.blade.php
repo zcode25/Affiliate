@@ -11,28 +11,21 @@
 
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-5">
                     
-            <!-- Total Withdrawal Card -->
             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
-                <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission Paid</p>
-                <p class="text-2xl font-bold text-purple-600 dark:text-white">Rp {{ number_format($totalCommissionPaid, 0, ',', '.') }}</p>
+                <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission</p>
+                <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalCommissionPaid, 0, ',', '.') }}</p>
             </div>
 
-            
-
-            <!-- Remaining Payment Card -->
             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
                 <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Withdrawal</p>
                 <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalWithdrawal, 0, ',', '.') }}</p>
             </div>
 
-
-            <!-- Withdrawal Pending Card -->
             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
                 <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Withdrawal Pending</p>
                 <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $pendingWithdrawals }}</p>
             </div>
 
-            <!-- Total Withdrawal Card -->
             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
                 <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Affiliate</p>
                 <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $totalAffiliates }}</p>

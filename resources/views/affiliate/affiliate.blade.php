@@ -7,6 +7,24 @@
 
   <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-5">
+                        
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Affiliate</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $totalAffiliate }}</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Affiliate Active</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $affiliateActive }}</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Affiliate Deactive</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $affiliateDeactive }}</p>
+                </div>
+                
+            </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-5">
               <div class="p-6 text-gray-900 dark:text-gray-100">
                 <h3 class="mb-5 font-bold text-xl">Affiliate Data</h3>

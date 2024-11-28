@@ -82,13 +82,63 @@
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const confirmButtons = document.querySelectorAll('.swalWithdrawalConfirm');
+    
+                confirmButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+    
+                    Swal.fire({
+                    title: "Are you sure?",
+                    text: "Do you want to approve the withdrawal?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#8b5cf6",
+                    cancelButtonColor: "#ec4899",
+                    confirmButtonText: "Yes, approved!"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        button.closest('form').submit();
+                    }
+                    });
+                });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const rejectButtons = document.querySelectorAll('.swalWithdrawalReject');
+
+                rejectButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault(); 
+
+                    Swal.fire({
+                    title: "Are you sure?",
+                    text: "Do you want to approve the withdrawal?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#8b5cf6",
+                    cancelButtonColor: "#ec4899",
+                    confirmButtonText: "Yes, reject it!",
+                    cancelButtonText: "Cancel"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        button.closest('form').submit();
+                    }
+                    });
+                });
+                });
+            });
+        </script>
+        <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mencari tombol dengan kelas `swalDefaultConfirm`
             const confirmButtons = document.querySelectorAll('.swalDefaultConfirm');
 
             confirmButtons.forEach(button => {
             button.addEventListener('click', function (event) {
-                event.preventDefault(); // Mencegah submit form langsung
+                event.preventDefault();
 
                 Swal.fire({
                 title: "Are you sure?",
@@ -100,7 +150,6 @@
                 confirmButtonText: "Yes, activate it!"
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    // Jika dikonfirmasi, submit form
                     button.closest('form').submit();
                 }
                 });

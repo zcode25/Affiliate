@@ -41,9 +41,9 @@ Route::controller(ProjectController::class)->group(function() {
 });
 
 Route::controller(WithdrawalController::class)->group(function() {
-    route::get('/withdrawal', 'index')->name('withdrawal.index');
-    route::post('/withdrawal/request', 'request')->name('withdrawal.request');
-    route::post('/withdrawal/{withdrawal}/process', 'processWithdrawal')->name('withdrawal.process');
+    route::get('/withdrawal', 'index')->name('withdrawal.index')->middleware(['auth']);
+    route::post('/withdrawal/request', 'request')->name('withdrawal.request')->middleware(['auth']);
+    route::post('/withdrawal/{withdrawal}/process', 'processWithdrawal')->name('withdrawal.process')->middleware(['auth']);
 });
 
 

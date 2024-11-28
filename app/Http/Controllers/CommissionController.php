@@ -22,11 +22,13 @@ class CommissionController extends Controller
                                       ->get();
             
             $totalCommission = $commissions->sum('amount');
+            $amountCommission = $commissions->count();
             $totalProcessed = $withdrawals->where('status', 'approved')->sum('amount');
             $remainingAmount = $totalCommission - $totalProcessed;
         } else {
             $withdrawals = Withdrawal::orderBy('requested_at', 'desc')->get();
             $commissions = Commission::orderBy('created_at', 'desc')->get();
+            $amountCommission = $commissions->count();
             $totalCommission = $commissions->sum('amount');
             $totalProcessed = $withdrawals->where('status', 'approved')->sum('amount');
             $remainingAmount = $totalCommission - $totalProcessed;
@@ -35,6 +37,7 @@ class CommissionController extends Controller
         return view('commission.index', [
             'commissions' => $commissions,
             'totalCommission' => $totalCommission,
+            'amountCommission' => $amountCommission,
             'remainingAmount' => $remainingAmount,
         ]);
     }

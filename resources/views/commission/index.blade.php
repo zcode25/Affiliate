@@ -8,24 +8,23 @@
   <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-        
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-5">
                     
-            <!-- Total Withdrawal Card -->
+            <div class="bg-gradient-to-br from-purple-600 to-blue-500 dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                <p class="font-normal text-md text-white dark:text-gray-200 mb-2">Commission Balance</p>
+                <p class="text-2xl font-bold text-white dark:text-white">Rp {{ number_format($remainingAmount, 0, ',', '.') }}</p>
+            </div>
+
             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
                 <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission</p>
-                <p class="text-2xl font-bold text-purple-600 dark:text-white">Rp {{ number_format($totalCommission, 0, ',', '.') }}</p>
+                <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalCommission, 0, ',', '.') }}</p>
             </div>
 
-            
-
-            <!-- Remaining Payment Card -->
             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
-                <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Commission Balance</p>
-                <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($remainingAmount, 0, ',', '.') }}</p>
+                <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Amount Commission</p>
+                <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $amountCommission }}</p>
             </div>
 
-            
         </div>
 
           

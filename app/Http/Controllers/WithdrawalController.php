@@ -21,27 +21,22 @@ class WithdrawalController extends Controller
             
             $totalCommission = Commission::where('affiliate_id', $affiliate->id)->sum('amount');
             
-            // Hitung total penarikan yang sudah diajukan affiliate
             $totalWithdrawal = $withdrawals->where('status', 'approved')->sum('amount');
             $totalPending = $withdrawals->where('status', 'pending')->sum('amount');
             $totalProcessed = $withdrawals->where('status', 'approved')->sum('amount');
             
-            // Sisa komisi yang bisa ditarik oleh affiliate (total komisi - penarikan yang sudah diproses)
-            $remainingAmount = $totalCommission - $totalProcessed;
+            $remainingAmount = $totalCommission - $totalProcessed - $totalPending;
             
         } else {
-            // Untuk Admin: Menampilkan semua withdrawals dan komisi total
             $withdrawals = Withdrawal::orderBy('requested_at', 'desc')->get();
             $totalCommission = Commission::sum('amount');
             
-            // Menambahkan informasi total withdrawal, total pending, dan sisa pembayaran
             $totalWithdrawal = $withdrawals->where('status', 'approved')->sum('amount');
             $totalPending = $withdrawals->where('status', 'pending')->sum('amount');
             $totalProcessed = $withdrawals->where('status', 'approved')->sum('amount');
-            $remainingAmount = $totalCommission - $totalProcessed;
+            $remainingAmount = $totalCommission - $totalProcessed - $totalPending;
         }
     
-        // Return view dengan data withdrawals, total commission, dan info tambahan untuk admin
         return view('withdrawal.index', [
             'withdrawals' => $withdrawals,
             'totalCommission' => $totalCommission,
@@ -55,44 +50,36 @@ class WithdrawalController extends Controller
     
     public function request(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'amount' => 'required|numeric|min:100000',  // Pastikan jumlah penarikan lebih dari 0
+            'amount' => 'required|numeric|min:100000',
         ]);
     
-        // Ambil affiliate yang sedang login
         $affiliate = Auth::user()->affiliate;
         
-        // Hitung total komisi yang dimiliki affiliate
         $totalCommission = Commission::where('affiliate_id', $affiliate->id)->sum('amount');
         
-        // Hitung total penarikan yang sudah diajukan, yang belum diproses
         $totalWithdrawn = Withdrawal::where('affiliate_id', $affiliate->id)
-                                     ->whereIn('status', ['pending', 'approved']) // Penarikan yang belum ditolak
+                                     ->whereIn('status', ['pending', 'approved'])
                                      ->sum('amount');
         
         $availableBalance = $totalCommission - $totalWithdrawn;
     
-        // Cek apakah jumlah penarikan melebihi saldo yang tersedia
         if ($request->amount > $availableBalance) {
-            return back()->withErrors(['amount' => 'Jumlah penarikan melebihi saldo komisi yang tersedia.']);
+            return back()->withErrors(['amount' => 'The withdrawal amount exceeds the available commission balance']);
         }
     
-        // Jika saldo komisi cukup, buat data penarikan baru
         Withdrawal::create([
             'affiliate_id' => $affiliate->id,
             'amount' => $request->amount,
             'status' => 'pending',
         ]);
     
-        // Kembalikan response dengan pesan sukses
-        return back()->with('success', 'Pengajuan penarikan berhasil diajukan.');
+        return back()->with('success', 'Withdrawal request successfully submitted');
     }
     
 
     public function processWithdrawal(Request $request, Withdrawal $withdrawal)
     {
-        // Validasi input
         $request->validate([
             'status' => 'required|in:approved,rejected',
         ]);

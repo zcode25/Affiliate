@@ -40,9 +40,16 @@ class AffiliateController extends Controller
     }
 
     public function affiliate() {
+        $totalAffiliate = Affiliate::count();
+        $affiliateActive = Affiliate::where('status', 'active')->count();
+        $affiliateDeactive = Affiliate::where('status', 'deactive')->count();
+
         $affiliates = Affiliate::all();
         return view('affiliate.affiliate', [
-            'affiliates' => $affiliates
+            'affiliates' => $affiliates,
+            'totalAffiliate' => $totalAffiliate,
+            'affiliateActive' => $affiliateActive,
+            'affiliateDeactive' => $affiliateDeactive,
         ]);
     }
 

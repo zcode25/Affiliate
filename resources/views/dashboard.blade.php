@@ -7,35 +7,29 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Total Commission -->
-                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
-                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission</h3>
-                    <p class="text-2xl font-bold text-purple-600 dark:text-white">
-                        Rp {{ number_format($totalCommission, 0, ',', '.') }}
-                    </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-5">
+                    
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalCommission, 0, ',', '.') }}</p>
                 </div>
-                <!-- Total Withdrawal -->
-                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
-                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Withdrawal</h3>
-                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                        Rp {{ number_format($totalWithdrawal, 0, ',', '.') }}
-                    </p>
+
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Withdrawal</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalWithdrawal, 0, ',', '.') }}</p>
                 </div>
-                <!-- Pending Withdrawals -->
-                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
-                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Pending Withdrawals</h3>
-                    <p class="text-2xl font-bold ttext-gray-800 dark:text-gray-200">
-                        Rp {{ number_format($pendingWithdrawals, 0, ',', '.') }}
-                    </p>
+
+
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Pending Withdrawals</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($pendingWithdrawals, 0, ',', '.') }}</p>
                 </div>
-                <!-- Approved Withdrawals -->
-                <div class="p-4 bg-white shadow rounded-lg dark:bg-gray-800">
-                    <h3 class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Approved Withdrawals</h3>
-                    <p class="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                        Rp {{ number_format($approvedWithdrawals, 0, ',', '.') }}
-                    </p>
+
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Approved Withdrawals</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($approvedWithdrawals, 0, ',', '.') }}</p>
                 </div>
+                
             </div>
 
             <!-- Chart Section -->
