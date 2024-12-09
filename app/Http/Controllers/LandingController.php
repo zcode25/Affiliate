@@ -16,16 +16,21 @@ class LandingController extends Controller
         $affiliate = Affiliate::where('affiliate_code', $affiliateCode)->first();
         $now = now();
 
-        $dailyClickLimit = 10000;
+        $dailyClickLimit = 1000;
 
         if ($affiliate) {
+
+            if ($affiliate->status !== 'active') {
+                abort(403, 'Affiliate is deactivated and cannot share links');
+            }
+            
             $clickCountToday = AffiliateClick::where('affiliate_id', $affiliate->id)
                 ->where('ip_address', $request->ip())
                 ->whereDate('clicked_at', $now->toDateString())
                 ->count();
 
             if ($clickCountToday >= $dailyClickLimit) {
-                abort(429, 'Anda telah mencapai batas klik harian untuk tautan ini.');
+                abort(429, 'You have reached the daily click limit for this link');
             }
 
             AffiliateClick::create([
@@ -36,7 +41,7 @@ class LandingController extends Controller
 
             return view('landing.index');
         } else {
-            abort(403, 'Affiliate code tidak terdaftar.');
+            abort(403, 'Affiliate code is not registered');
         }
     }
 

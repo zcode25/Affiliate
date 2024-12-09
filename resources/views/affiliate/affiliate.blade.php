@@ -65,10 +65,14 @@
                           <td>{{ $item->user->name }}</td>
                           <td>{{ $item->user->email }}</td>
                           <td>{{ $item->affiliate_code }}</td>
-                          <td><span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ ucfirst(trans($item->status)) }}</span></td>
+                            @if ($item->status == 'active')
+                                <td><span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ ucfirst(trans($item->status)) }}</span></td>
+                            @else
+                                <td><span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">{{ ucfirst(trans($item->status)) }}</span></td>
+                            @endif
                           {{-- <td>{{ $item->status }}</td> --}}
                           <td>
-                            <a href="" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">View</a>
+                            <a href="{{ route('affiliate.detail', $item) }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">View</a>
                           </td>
                         </tr>
                       @endforeach

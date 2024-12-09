@@ -66,6 +66,13 @@
                 });
             }
 
+            if (document.getElementById("affiliateProjectTable") && typeof simpleDatatables.DataTable !== 'undefined') {
+                const dataTable = new simpleDatatables.DataTable("#affiliateProjectTable", {
+                    searchable: true,
+                    sortable: false
+                });
+            }
+
             if (document.getElementById("commissionTable") && typeof simpleDatatables.DataTable !== 'undefined') {
                 const dataTable = new simpleDatatables.DataTable("#commissionTable", {
                     searchable: true,
@@ -148,6 +155,32 @@
                 confirmButtonColor: "#8b5cf6",
                 cancelButtonColor: "#ec4899",
                 confirmButtonText: "Yes, activate it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    button.closest('form').submit();
+                }
+                });
+            });
+            });
+        });
+        </script>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const confirmButtons = document.querySelectorAll('.swalDefaultDeactivate');
+
+            confirmButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to deactivate this affiliate?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#8b5cf6",
+                cancelButtonColor: "#ec4899",
+                confirmButtonText: "Yes, deactivate it!"
                 }).then((result) => {
                 if (result.isConfirmed) {
                     button.closest('form').submit();

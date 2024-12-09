@@ -30,7 +30,10 @@ Route::controller(AffiliateController::class)->group(function() {
     route::patch('/registration/{id}/active', 'activeAffiliate')->name('affiliate.active')->middleware(['auth', 'role:Admin']);
     route::patch('/registration/{id}/reject', 'rejectAffiliate')->name('affiliate.reject')->middleware(['auth', 'role:Admin']);
     route::get('/affiliate', 'affiliate')->name('affiliate.affiliate')->middleware(['auth', 'role:Admin']);
+    route::get('/affiliate/detail/{affiliate}', 'detail')->name('affiliate.detail')->middleware(['auth', 'role:Admin']);
     route::get('/link', 'link')->name('affiliate.link')->middleware(['auth', 'role:Affiliate']);
+    Route::put('/affiliate/{id}/deactivate', 'deactivate')->name('affiliate.deactivate')->middleware(['auth']);
+    Route::put('/affiliate/{id}/activate', 'activate')->name('affiliate.activate')->middleware(['auth']);
 });
 
 Route::controller(ProjectController::class)->group(function() {

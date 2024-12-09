@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Affiliate;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\AffiliateClick;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,61 @@ class AffiliateController extends Controller
             'affiliateActive' => $affiliateActive,
             'affiliateDeactive' => $affiliateDeactive,
         ]);
+    }
+
+    public function detail(Affiliate $affiliate) {
+
+        $affiliate = Affiliate::where('id', $affiliate->id)->first();
+
+        $affiliateCode = $affiliate->affiliate_code;
+        $affiliateLink = url('/landing?ref=' . $affiliateCode);
+    
+        $affiliateId = $affiliate->id;
+    
+        $affiliateClick = AffiliateClick::where('affiliate_id', $affiliateId)
+            ->orderBy('clicked_at', 'desc')
+            ->get();
+    
+        $totalClicks = $affiliateClick->count();
+
+        $clicksThisWeek = AffiliateClick::where('affiliate_id', $affiliateId)
+            ->whereBetween('clicked_at', [now()->startOfWeek(), now()->endOfWeek()])
+            ->count();
+    
+        $clicksThisMonth = AffiliateClick::where('affiliate_id', $affiliateId)
+            ->whereBetween('clicked_at', [now()->startOfMonth(), now()->endOfMonth()])
+            ->count();
+
+        $projects = Project::where('affiliate_id', $affiliateId)->get();
+    
+        return view('affiliate.detail', [
+            'affiliateLink' => $affiliateLink,
+            'affiliateClick' => $affiliateClick,
+            'totalClicks' => $totalClicks,
+            'clicksThisWeek' => $clicksThisWeek,
+            'clicksThisMonth' => $clicksThisMonth,
+            'affiliate' => $affiliate,
+            'projects' => $projects
+        ]);
+
+    }
+
+    public function deactivate($id)
+    {
+        $affiliate = Affiliate::findOrFail($id);
+        $affiliate->status = 'deactive';
+        $affiliate->save();
+
+        return redirect()->back()->with('status', 'Affiliate successfully deactivated.');
+    }
+
+    public function activate($id)
+    {
+        $affiliate = Affiliate::findOrFail($id);
+        $affiliate->status = 'active';
+        $affiliate->save();
+        
+        return redirect()->back()->with('status', 'Affiliate successfully activated.');
     }
 
     public function link()

@@ -29,18 +29,23 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            // Cek apakah pengguna adalah affiliate dan statusnya 'pending' atau 'reject'
             if ($user->affiliate && $user->affiliate->status === 'pending') {
                 Auth::logout();
-
+            
                 return redirect()->route('login')->withErrors([
                     'email' => 'Your account is still pending approval and cannot log in at this time.',
                 ]);
             } elseif ($user->affiliate && $user->affiliate->status === 'reject') {
                 Auth::logout();
-
+            
                 return redirect()->route('login')->withErrors([
                     'email' => 'Your account has been rejected and cannot log in.',
+                ]);
+            } elseif ($user->affiliate && $user->affiliate->status === 'deactive') {
+                Auth::logout();
+            
+                return redirect()->route('login')->withErrors([
+                    'email' => 'Your account has been deactivated and cannot log in.',
                 ]);
             }
 
@@ -53,7 +58,6 @@ class AuthenticatedSessionController extends Controller
             }
         }
 
-        // Jika kredensial tidak valid
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

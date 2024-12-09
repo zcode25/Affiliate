@@ -47,6 +47,30 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" name="phone" type="tel" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autofocus autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+
+        <div>
+            <x-input-label for="instagram" :value="__('Instagram')" />
+            <x-text-input id="instagram" name="instagram" type="tel" class="mt-1 block w-full" :value="old('instagram', $user->instagram)" required autofocus autocomplete="instagram" />
+            <x-input-error class="mt-2" :messages="$errors->get('instagram')" />
+        </div>
+
+        <div>
+            <x-input-label for="facebook" :value="__('Facebook')" />
+            <x-text-input id="facebook" name="facebook" type="tel" class="mt-1 block w-full" :value="old('facebook', $user->facebook)" required autofocus autocomplete="facebook" />
+            <x-input-error class="mt-2" :messages="$errors->get('facebook')" />
+        </div>
+
+        <div>
+            <x-input-label for="tiktok" :value="__('TikTok')" />
+            <x-text-input id="tiktok" name="tiktok" type="tel" class="mt-1 block w-full" :value="old('tiktok', $user->tiktok)" required autofocus autocomplete="tiktok" />
+            <x-input-error class="mt-2" :messages="$errors->get('tiktok')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
