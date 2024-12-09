@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Affiliate;
 use App\Models\Project;
+use App\Models\Withdrawal;
+use App\Models\Commission;
 use Illuminate\Http\Request;
 use App\Models\AffiliateClick;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +80,20 @@ class AffiliateController extends Controller
             ->count();
 
         $projects = Project::where('affiliate_id', $affiliateId)->get();
+
+        $withdrawals = Withdrawal::where('affiliate_id', $affiliateId)
+                ->orderBy('requested_at', 'desc')
+                ->get();
+        
+        $commissions = Commission::where('affiliate_id',  $affiliateId)
+                ->orderBy('created_at', 'desc')
+                ->get();
+            
+        $totalWithdrawal = $withdrawals->where('status', 'approved')->sum('amount');
+        $totalCommission = $commissions->sum('amount');
+        $amountCommission = $commissions->count();
+        $totalProcessed = $withdrawals->where('status', 'approved')->sum('amount');
+        $remainingAmount = $totalCommission - $totalProcessed;
     
         return view('affiliate.detail', [
             'affiliateLink' => $affiliateLink,
@@ -86,7 +102,13 @@ class AffiliateController extends Controller
             'clicksThisWeek' => $clicksThisWeek,
             'clicksThisMonth' => $clicksThisMonth,
             'affiliate' => $affiliate,
-            'projects' => $projects
+            'projects' => $projects,
+            'withdrawals' => $withdrawals,
+            'commissions' => $commissions,
+            'totalCommission' => $totalCommission,
+            'amountCommission' => $amountCommission,
+            'remainingAmount' => $remainingAmount,
+            'totalWithdrawal' => $totalWithdrawal ?? 0,
         ]);
 
     }

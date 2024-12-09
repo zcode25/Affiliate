@@ -215,6 +215,82 @@
                   </table>
                 </div>
             </div>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-5">                 
+                <div class="bg-gradient-to-br from-purple-600 to-blue-500 dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-white dark:text-gray-200 mb-2">Commission Balance</p>
+                    <p class="text-2xl font-bold text-white dark:text-white">Rp {{ number_format($remainingAmount, 0, ',', '.') }}</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Commission</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalCommission, 0, ',', '.') }}</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Amount Commission</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ $amountCommission }}</p>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md w-full sm:w-1/3">
+                    <p class="font-normal text-md text-gray-800 dark:text-gray-200 mb-2">Total Withdrawal</p>
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">Rp {{ number_format($totalWithdrawal, 0, ',', '.') }}</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-5">
+              <div class="p-6 text-gray-900 dark:text-gray-100">
+                  <h3 class="mb-5 font-bold text-xl">Commission Data</h3>
+                
+                  <table id="commissionTable" class="w-full text-left">
+                      <thead>
+                          <tr>
+                              <th class="py-2">Date Time</th>
+                              <th class="py-2">Project</th>
+                              <th class="py-2">Affiliate</th>
+                              <th class="py-2">Commission</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach ($commissions as $item)
+                            <tr>
+                              <td class="py-2">{{ $item->created_at }}</td>
+                              <td class="py-2">{{ $item->project->project_name }}</td>
+                              <td class="py-2">{{ $item->affiliate->user->name }}</td>
+                              <td class="py-2">Rp {{ number_format($item->amount, 0, ',', '.') }}</td>
+                            </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg mb-5 p-6">
+                <h3 class="font-bold text-xl mb-3">Withdrawal History</h3>
+                <table id="withdrawalTable" class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="py-2">Date</th>
+                            <th class="py-2">Affiliate</th>
+                            <th class="py-2">Amount</th>
+                            <th class="py-2">Status</th>
+                            <th class="py-2">Processed On</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($withdrawals as $withdrawal)
+                            <tr>
+                                <td class="py-2">{{ $withdrawal->requested_at }}</td>
+                                <td class="py-2">{{ $withdrawal->affiliate->user->name }}</td>
+                                <td class="py-2">Rp {{ number_format($withdrawal->amount, 0, ',', '.') }}</td>
+                                @if ($withdrawal->status == 'pending')
+                                <td><span class="bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{ ucfirst(trans($withdrawal->status)) }}</span></td>
+                                @elseif ($withdrawal->status == 'approved')
+                                <td><span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ ucfirst(trans($withdrawal->status)) }}</span></td>
+                                @else
+                                <td><span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">{{ ucfirst(trans($withdrawal->status)) }}</span></td>
+                                @endif
+                                {{-- <td class="py-2">{{ ucfirst($withdrawal->status) }}</td> --}}
+                                <td class="py-2">{{ $withdrawal->processed_at ? $withdrawal->processed_at : 'Unprocessed' }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
