@@ -10,6 +10,10 @@ use App\Models\Commission;
 use Illuminate\Http\Request;
 use App\Models\AffiliateClick;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\AffiliateActivated;
+use App\Mail\AffiliateRejected;
+use App\Mail\AffiliateDeactivated;
+use Illuminate\Support\Facades\Mail;
 
 class AffiliateController extends Controller
 {
@@ -31,6 +35,8 @@ class AffiliateController extends Controller
         $affiliate->status = 'active';
         $affiliate->save();
 
+        Mail::to($affiliate->user->email)->send(new AffiliateActivated($affiliate));
+
         return redirect()->route('affiliate.registration')->with('success', 'Affiliate account successfully activated.');
     }
 
@@ -38,6 +44,8 @@ class AffiliateController extends Controller
         $affiliate = Affiliate::findOrFail($id);
         $affiliate->status = 'reject';
         $affiliate->save();
+
+        Mail::to($affiliate->user->email)->send(new AffiliateRejected($affiliate));
 
         return redirect()->route('affiliate.registration')->with('success', 'Affiliate account has been rejected.');
     }
@@ -118,6 +126,8 @@ class AffiliateController extends Controller
         $affiliate = Affiliate::findOrFail($id);
         $affiliate->status = 'deactive';
         $affiliate->save();
+
+        Mail::to($affiliate->user->email)->send(new AffiliateDeactivated($affiliate));
 
         return redirect()->back()->with('status', 'Affiliate successfully deactivated.');
     }

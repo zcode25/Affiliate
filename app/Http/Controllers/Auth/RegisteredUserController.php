@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
+use App\Mail\AffiliateRegistrationMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -60,6 +62,8 @@ class RegisteredUserController extends Controller
             'affiliate_code' => $affiliateCode,
             'status' => 'pending',
         ]);
+
+        Mail::to($user->email)->send(new AffiliateRegistrationMail($user));
 
         event(new Registered($user));
 
